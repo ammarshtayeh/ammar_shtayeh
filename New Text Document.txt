@@ -1,0 +1,77 @@
+
+#include<iostream>
+using namespace std;
+
+void readPrintArray()
+{
+int arr[4][4]; 
+int i,j; 
+
+cout<<"Enter values of the array: "<<endl;
+// read value
+for(i=0; i<4; i++)
+{
+for(j=0; j<4; j++)
+{
+cin>>*(*(arr+i)+j);
+}
+}
+cout<<"Values in ziq zaq manner: "<<endl;
+for(i=0; i<4; i++)
+{
+// for even row
+if(i%2 == 0)
+{
+for(j=0; j<4; j++)
+{
+cout<<*(*(arr+i)+j)<<" ";
+}
+}
+else 
+{
+for(j=3; j>=0; j--)
+{
+cout<<*(*(arr+i)+j)<<" ";
+}
+}
+cout<<endl;
+}
+}
+
+void findOddNums(const int source[4][4], int destination[4][4])
+{
+int i, j; 
+int counter=0; 
+for(i=0; i<4; i++)
+{
+counter = 0;
+for(j=0; j<4; j++)
+{
+if(*(*(source+i)+j) % 2 != 0)
+{
+destination[i][counter++] = source[i][j];
+}
+}
+}
+}
+
+int main()
+{
+int arr[4][4] = {1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 14, 15, 16};
+int i, j;
+int destArr[4][4] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
+
+readPrintArray();
+findOddNums(arr, destArr);
+
+for(i=0; i<4; i++)
+{
+for(j=0; j<4; j++)
+{
+if(destArr[i][j] != 0)
+cout<<destArr[i][j]<<" ";
+}
+cout<<endl;
+}
+}
+
